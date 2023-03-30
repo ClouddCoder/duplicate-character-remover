@@ -1,8 +1,28 @@
+import { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
+import InputString from "@/components/InputScreen";
+import DuplicatesScreen from "@/components/DuplicatesScreen";
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
+  const [string, setString] = useState("");
+  const [hasString, setHasString] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!string) {
+      alert("Please enter a string");
+      return;
+    }
+
+    setHasString(true);
+  };
+
+  const handleChange = (e) => {
+    setString(e.target.value);
+  };
+
   return (
     <>
       <Head>
@@ -12,7 +32,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1>Hola mundo</h1>
+        {!hasString ? (
+          <InputString
+            onHandleSubmit={handleSubmit}
+            onString={string}
+            onHandleChange={handleChange}
+          />
+        ) : (
+          <DuplicatesScreen />
+        )}
       </main>
     </>
   );

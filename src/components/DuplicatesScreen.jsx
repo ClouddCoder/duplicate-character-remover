@@ -3,7 +3,7 @@ function DuplicatesScreen({ characters }) {
     <div>
       <h2>Remove the duplicates</h2>
       <div>
-        {characters.map((char, index) => (
+        {characters?.map((char, index) => (
           <div key={index}>{char}</div>
         ))}
       </div>
