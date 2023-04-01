@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import generateRandomColors from "@/utils/generateRandomColors";
+import checkDuplicates from "@/utils/checkDuplicates";
 import useUniqueCharacterColors from "@/utils/hooks/useUniqueCharacterColors";
 import useMessage from "@/utils/hooks/useMessage";
 import useCharacters from "@/utils/hooks/useCharacters";
@@ -14,6 +15,14 @@ function DuplicatesScreen({ onString }) {
 
   useEffect(() => {
     setColors(generateRandomColors(uniqueCharacters.characters));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // If the initial string has no duplicates, the message will be set to "There are no duplicates".
+  useEffect(() => {
+    const hasDuplicates = checkDuplicates(characters.characters, uniqueCharacters.characters);
+
+    hasDuplicates && setCustomMessage("There are no duplicates");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -57,6 +66,17 @@ function DuplicatesScreen({ onString }) {
           );
         })}
       </section>
+      {message && (
+        <section>
+          <h3 className="success-header">{message}</h3>
+          <div>
+            <span>{`Original string: ${onString}`}</span>
+          </div>
+          <div>
+            <span>{`New string: ${characters.characters.join("")}`}</span>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

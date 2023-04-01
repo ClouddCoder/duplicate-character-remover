@@ -5,10 +5,10 @@ import { useState } from "react";
  * @returns {Object} - Object with the state and setState method.
  */
 const useMessage = () => {
-  const [message, setMessage] = useState(false);
+  const [message, setMessage] = useState("");
 
   const setCustomMessage = (customMessage) => {
-    setHasDuplicates(customMessage);
+    setMessage(customMessage);
   };
 
   return { message, setCustomMessage };
