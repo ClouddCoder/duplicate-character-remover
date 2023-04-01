@@ -12,6 +12,7 @@ function DuplicatesScreen({ onString }) {
   const { message, setCustomMessage } = useMessage();
 
   const charactersRef = useRef(characters.characters);
+  const messageRef = useRef(message);
 
   useEffect(() => {
     setColors(generateRandomColors(uniqueCharacters.characters));
@@ -22,7 +23,11 @@ function DuplicatesScreen({ onString }) {
   useEffect(() => {
     const hasDuplicates = checkDuplicates(characters.characters, uniqueCharacters.characters);
 
-    hasDuplicates && setCustomMessage("There are no duplicates");
+    if (hasDuplicates) {
+      hasDuplicates && setCustomMessage("There are no duplicates");
+      messageRef.current = "There are no duplicates";
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -38,6 +43,13 @@ function DuplicatesScreen({ onString }) {
 
         charactersRef.current = newCharacters;
         characters.setNewCharacters(newCharacters);
+
+        const hasDuplicates = checkDuplicates(newCharacters, uniqueCharacters.characters);
+
+        if (hasDuplicates && !messageRef.current) {
+          setCustomMessage("All duplicates have been removed");
+          messageRef.current = "All duplicates have been removed";
+        }
       }
     };
 
