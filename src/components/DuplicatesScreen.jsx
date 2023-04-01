@@ -49,6 +49,8 @@ function DuplicatesScreen({ onString }) {
         if (hasDuplicates && !messageRef.current) {
           setCustomMessage("All duplicates have been removed");
           messageRef.current = "All duplicates have been removed";
+
+          document.removeEventListener("click", handleDeteleDuplicates);
         }
       }
     };
