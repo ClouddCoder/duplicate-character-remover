@@ -1,7 +1,14 @@
 function InputScreen({ onHandleSubmit, onString, onHandleChange }) {
   return (
-    <div id="user-input-container">
-      <form className="row gy-2 gx-3 align-items-center" onSubmit={onHandleSubmit}>
+    <div className="container-md">
+      <header className="text-center mb-5">
+        <h2 className="fs-4">Duplicate Character Remover</h2>
+        <h3 className="fs-5">Type the string you want to remove its duplicated characters.</h3>
+      </header>
+      <form
+        className="row gy-2 gx-3 align-items-center justify-content-center"
+        onSubmit={onHandleSubmit}
+      >
         <div className="col-auto">
           <label className="visually-hidden" htmlFor="autoSizingInput">
             String
