@@ -4,6 +4,7 @@ import checkDuplicates from "@/utils/checkDuplicates";
 import useUniqueCharacterColors from "@/utils/hooks/useUniqueCharacterColors";
 import useMessage from "@/utils/hooks/useMessage";
 import useCharacters from "@/utils/hooks/useCharacters";
+import styles from "./DuplicatesScreen.module.css";
 
 function DuplicatesScreen({ onString }) {
   const characters = useCharacters(onString.split(""));
@@ -65,13 +66,17 @@ function DuplicatesScreen({ onString }) {
 
   return (
     <div>
-      <h2>Remove the duplicates</h2>
-      <section>
+      <header className="text-center mb-5">
+        <h2 className="fs-4">Remove the duplicates</h2>
+      </header>
+      <section
+        className={`d-flex flex-wrap gap-3 align-items-center justify-content-center ${styles.cards}`}
+      >
         {characters.characters?.map((char, index) => {
           const color = uniqueCharacterColors[char];
 
           return (
-            <div key={index} style={{ background: color }}>
+            <div key={index} style={{ background: color }} className={`w-20 ${styles.card}`}>
               <button name="delete-duplicate-button" id={`button-${index}`}>
                 Delete
               </button>

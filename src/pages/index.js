@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
-import InputString from "@/components/InputScreen";
-import DuplicatesScreen from "@/components/DuplicatesScreen";
+import InputString from "@/components/input-screen/InputScreen";
+import DuplicatesScreen from "@/components/duplicates-screen/DuplicatesScreen";
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
