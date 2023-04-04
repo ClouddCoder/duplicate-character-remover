@@ -6,3 +6,12 @@
   min-width: 150px;
   min-height: 150px;
 }
+
+.button {
+  background: transparent;
+  border: 0;
+}
+
+.button * {
+  pointer-events: none;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import generateRandomColors from "@/utils/generateRandomColors";
 import checkDuplicates from "@/utils/checkDuplicates";
 import useUniqueCharacterColors from "@/utils/hooks/useUniqueCharacterColors";
@@ -34,6 +35,7 @@ function DuplicatesScreen({ onString }) {
 
   useEffect(() => {
     const handleDeteleDuplicates = (e) => {
+      console.log(e.target);
       if (e.target.name === "delete-duplicate-button") {
         const characterIndex = parseInt(e.target.id.split("-")[1]);
 
@@ -79,10 +81,14 @@ function DuplicatesScreen({ onString }) {
             <div
               key={index}
               style={{ background: color }}
-              className={`w-20 border border-dark ${styles.card}`}
+              className={`w-20 border border-dark d-flex flex-column justify-content-around text-center ${styles.card}`}
             >
-              <button name="delete-duplicate-button" id={`button-${index}`}>
-                Delete
+              <button
+                name="delete-duplicate-button"
+                id={`button-${index}`}
+                className={styles.button}
+              >
+                <Image src="/trash.svg" alt="trash" width={30} height={30} />
               </button>
               <span>{char}</span>
             </div>
