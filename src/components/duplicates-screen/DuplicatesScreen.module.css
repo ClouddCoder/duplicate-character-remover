@@ -5,13 +5,31 @@
 .card {
   min-width: 150px;
   min-height: 150px;
+  border-radius: 10px;
 }
 
 .button {
-  background: transparent;
+  background: white;
   border: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
 }
 
 .button * {
   pointer-events: none;
+}
+
+.relativeContainer {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  display: grid;
+  place-items: center;
+}
+
+.back {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

@@ -39,7 +39,11 @@ export default function Home() {
             onHandleChange={handleChange}
           />
         ) : (
-          <DuplicatesScreen onString={string} />
+          <DuplicatesScreen
+            onString={string}
+            onSetString={setString}
+            onSetHasString={setHasString}
+          />
         )}
       </main>
     </>
