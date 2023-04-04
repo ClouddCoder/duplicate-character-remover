@@ -76,7 +76,11 @@ function DuplicatesScreen({ onString }) {
           const color = uniqueCharacterColors[char];
 
           return (
-            <div key={index} style={{ background: color }} className={`w-20 ${styles.card}`}>
+            <div
+              key={index}
+              style={{ background: color }}
+              className={`w-20 border border-dark ${styles.card}`}
+            >
               <button name="delete-duplicate-button" id={`button-${index}`}>
                 Delete
               </button>
